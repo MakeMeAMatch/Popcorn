@@ -1,6 +1,6 @@
 # final_project
 
-#team members
+#team members:
 Brandon Little, Miya Lucas, Thomas Reyes
 
 #project topic
