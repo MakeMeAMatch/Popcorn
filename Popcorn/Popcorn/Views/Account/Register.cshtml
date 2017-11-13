@@ -1,0 +1,50 @@
+﻿@model Popcorn.Models.RegisterViewModel
+
+<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+    <div asp-validation-summary="All"></div>
+    <h4>Create An Account </h4>
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span> <br /> <br />
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span><br /> <br />
+
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword" />
+    <span asp-validation-for="ConfirmPassword"></span><br /> <br />
+
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span> <br /> <br />
+
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span> <br /> <br />
+
+    <label asp-for="KidAgeRanges"></label>
+    <input asp-for="KidAgeRanges" />
+    <span asp-validation-for="KidAgeRanges"></span> <br /> <br />
+
+    <label asp-for="NumberOfKids"></label>
+    <input asp-for="NumberOfKids" />
+    <span asp-validation-for="NumberOfKids"></span> <br /> <br />
+
+    <label asp-for="CityState"></label>
+    <input asp-for="CityState" />
+    <span asp-validation-for="CityState"></span> <br /> <br />
+
+    <label asp-for="DateOfBirth"></label>
+    <input asp-for="DateOfBirth" />
+    <span asp-validation-for="DateOfBirth"></span> <br /> <br />
+
+    <label asp-for="PlaySpots"></label>
+    <input asp-for="PlaySpots" />
+    <span asp-validation-for="PlaySpots"></span> <br /> <br />
+
+
+    <button type="submit">Register</button>
+
+</form>

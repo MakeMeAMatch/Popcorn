@@ -1,0 +1,21 @@
+﻿@model Popcorn.Models.LoginViewModel
+
+@*Login Form*@
+<h4> Login To Your Account</h4>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" /><br /><br />
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" /><br /><br />
+
+    <label asp-for="RememberMe">
+        <input type="checkbox" asp-for="RememberMe" />
+        @Html.DisplayNameFor(m => m.RememberMe)
+    </label><br /><br />
+
+    <button type="submit">Login</button>
+
+</form>
