@@ -36,7 +36,7 @@ namespace Popcorn.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = rvm.Email, FirstName = rvm.FirstName, LastName = rvm.LastName, FullName = rvm.FullName, KidAgeRanges = rvm.KidAgeRanges, NumberOfKids = rvm.NumberOfKids, CityState= rvm.CityState, DateOfBirth = rvm.DateOfBirth, PlaySpots = rvm.PlaySpots };
+                var user = new User { UserName = rvm.Email, FirstName = rvm.FirstName, LastName = rvm.LastName, FullName = rvm.FirstName + " " + rvm.LastName, KidAgeRanges = rvm.KidAgeRanges, NumberOfKids = rvm.NumberOfKids, CityState= rvm.CityState, DateOfBirth = rvm.DateOfBirth, PlaySpots = rvm.PlaySpots };
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
                 //if user was successfully registered
