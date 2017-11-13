@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popcorn", "Popcorn\Popcorn.csproj", "{47F25990-096B-40D6-A5BC-7ED54E73DE87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{21EAEF2C-7E56-499A-B0C9-5DBEC099B5B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopcornTests", "PopcornTests\PopcornTests.csproj", "{1B2C3E86-073A-4159-9029-D3C4E106E447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{47F25990-096B-40D6-A5BC-7ED54E73DE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47F25990-096B-40D6-A5BC-7ED54E73DE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47F25990-096B-40D6-A5BC-7ED54E73DE87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B2C3E86-073A-4159-9029-D3C4E106E447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2C3E86-073A-4159-9029-D3C4E106E447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2C3E86-073A-4159-9029-D3C4E106E447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2C3E86-073A-4159-9029-D3C4E106E447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B2C3E86-073A-4159-9029-D3C4E106E447} = {21EAEF2C-7E56-499A-B0C9-5DBEC099B5B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {661EDE16-DF6B-40A0-B867-7367738CDDFA}
