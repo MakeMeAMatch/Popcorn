@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
 {
+    //Inheriting from Controller
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
+        //Constructor that passes in usermanager and signInManager on page load
         public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager)
         {
             _userManager = usermanager;
@@ -26,6 +28,7 @@ namespace Popcorn.Controllers
             return View();
         }
 
+        //Creating a new user
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm, string returnUrl = null)
         {
@@ -51,6 +54,7 @@ namespace Popcorn.Controllers
             return View();
         }
 
+        //Login user and redirect to home page
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {

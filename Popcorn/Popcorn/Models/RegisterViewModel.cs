@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Models
 {
+    //Registration fields
     public class RegisterViewModel
     {
         [Required]
