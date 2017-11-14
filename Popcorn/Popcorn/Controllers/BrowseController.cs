@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("[controller]")]
     public class BrowseController : Controller
     {
         //dependency injection
@@ -41,23 +41,30 @@ namespace Popcorn.Controllers
 
         //this action will affect which user profile results are displayed based on which quality is chosen by the user
 
-        [HttpGet("{quality:string, value:int}")]
-        public IActionResult BeSelective(string quality, int value)
+        //[HttpGet("{id:int}")]
+        public IActionResult BeSelective(string quality, int id)
         {
-            List<Users> UserProfiles = new List<Users>();
+            if (id > 0)
+            {
+                List<Users> UserProfiles = new List<Users>();
 
-            var DbUsers = _context.Users;
+                var DbUsers = _context.Users;
 
-            var param = Expression.Parameter(typeof(User));
+                var param = Expression.Parameter(typeof(User));
 
-            var condition = Expression.Lambda<Func<User, bool>>(Expression.Equal
-            (Expression.Property(param, quality), Expression.Constant(value, typeof(int))));
+                var condition = Expression.Lambda<Func<User, bool>>(Expression.Equal
+                (Expression.Property(param, quality), Expression.Constant(id, typeof(int))));
 
-            var item = DbUsers.Where(condition);
+                var item = DbUsers.Where(condition);
 
-            return View(item);
+                return View(item);
 
-           
+            }
+
+            //TODO: Update on behavior on what to do if id is less than 1
+            return View();
+
+
 
 
         }
