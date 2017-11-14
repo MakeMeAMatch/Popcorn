@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popcorn", "Popcorn\Popcorn.csproj", "{47F25990-096B-40D6-A5BC-7ED54E73DE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Popcorn", "Popcorn\Popcorn.csproj", "{47F25990-096B-40D6-A5BC-7ED54E73DE87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{21EAEF2C-7E56-499A-B0C9-5DBEC099B5B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopcornTests", "PopcornTests\PopcornTests.csproj", "{1B2C3E86-073A-4159-9029-D3C4E106E447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopcornTests", "PopcornTests\PopcornTests.csproj", "{1B2C3E86-073A-4159-9029-D3C4E106E447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,21 @@
+﻿@page
+@model Popcorn.Models.ExternalLoginModel
+
+@{
+
+}
+
+<p>Authentication complete!</p>
+
+<div>
+    <form asp-action-for="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
