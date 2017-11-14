@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
@@ -42,7 +43,7 @@ namespace Popcorn.Controllers
         //this action will affect which user profile results are displayed based on which quality is chosen by the user
 
         //[HttpGet("{id:int}")]
-        public IActionResult BeSelective(string quality, int id)
+        public async Task<IActionResult> BeSelective(string quality, int id)
         {
             if (id > 0)
             {
@@ -50,15 +51,12 @@ namespace Popcorn.Controllers
 
                 var DbUsers = _context.Users;
 
-                var param = Expression.Parameter(typeof(User));
+                //var currentUser = await _userManager.FindByIdAsync(User.Identity.GetUserId);
+                var currentUser = await _userManager.GetUserAsync(User);
 
-                var condition = Expression.Lambda<Func<User, bool>>(Expression.Equal
-                (Expression.Property(param, quality), Expression.Constant(id, typeof(int))));
-
-                var item = DbUsers.Where(condition);
-
-                return View(item);
-
+                
+                return View();
+                
             }
 
             //TODO: Update on behavior on what to do if id is less than 1
