@@ -30,13 +30,35 @@ namespace PopcornTests
         }
 
         [Fact]
+        public void LoginandRegisterPasswordsMatch()
+        {
+            // Arrange
+            var p = new RegisterViewModel
+            {
+                //Act
+                Password = "P@#$word!23"
+            };
+
+            var m = new LoginViewModel
+            {
+                //Act
+                Password = "P@#$word!23"
+            };
+
+            //Assert
+            Assert.Equal(p.Password, m.Password);
+        }
+
+        [Fact]
         public void DOBIsDateTime()
         {
             // Arrange
-            var p = new User();
+            var p = new User
+            {
 
-            //Act
-            p.DateOfBirth = (new DateTime(1989, 8, 18));
+                //Act
+                DateOfBirth = (new DateTime(1989, 8, 18))
+            };
 
             //Assert
             Assert.IsType<DateTime>(p.DateOfBirth);
@@ -59,10 +81,12 @@ namespace PopcornTests
         public void RememberMeIsBool()
         {
             // Arrange
-            var p = new LoginViewModel();
+            var p = new LoginViewModel
+            {
 
-            //Act
-            p.RememberMe = false;
+                //Act
+                RememberMe = false
+            };
 
             //Assert
             Assert.IsType<bool>(p.RememberMe);
@@ -85,10 +109,12 @@ namespace PopcornTests
         public void FullNameIsString()
         {
             // Arrange
-            var p = new User();
+            var p = new User
+            {
 
-            //Act
-            p.FullName = "Clark Kent";
+                //Act
+                FullName = "Clark Kent"
+            };
 
             //Assert
             Assert.IsType<string>(p.FullName);
@@ -126,10 +152,12 @@ namespace PopcornTests
         public void PlaySpotsIsInt()
         {
             // Arrange
-            var p = new User();
+            var p = new User
+            {
 
-            //Act
-            p.PlaySpots = 5;
+                //Act
+                PlaySpots = 5
+            };
 
             //Assert
             Assert.IsType<int>(p.PlaySpots);
@@ -152,10 +180,12 @@ namespace PopcornTests
         public void PasswordIsString()
         {
             // Arrange
-            var p = new RegisterViewModel();
+            var p = new RegisterViewModel
+            {
 
-            //Act
-            p.Password = "password!23";
+                //Act
+                Password = "password!23"
+            };
 
             //Assert
             Assert.IsType<string>(p.Password);
@@ -174,5 +204,118 @@ namespace PopcornTests
             Assert.Equal("P@#$word!23", m.Password);
         }
 
+        [Fact]
+        public void CanChangeLastName()
+        {
+            // Arrange
+            var m = new User { LastName = "Wayne" };
+
+            //Act
+            m.LastName = "Kent";
+
+            //Assert
+            Assert.Equal("Kent", m.LastName);
+        }
+
+        [Fact]
+        public void NumberOfKidsIsInt()
+        {
+            // Arrange
+            var p = new User
+            {
+
+                //Act
+                NumberOfKids = 2
+            };
+
+            //Assert
+            Assert.IsType<int>(p.NumberOfKids);
+        }
+
+        [Fact]
+        public void EmailIsString()
+        {
+            // Arrange
+            var p = new RegisterViewModel
+            {
+
+                //Act
+                Email = "dad@gmail.com"
+            };
+
+            //Assert
+            Assert.IsType<DateTime>(p.DateOfBirth);
+        }
+
+        [Fact]
+        public void RegisterPasswordsMatch()
+        {
+            // Arrange
+            var p = new RegisterViewModel
+            {
+
+                //Act
+                Password = "P@#$word!23",
+                ConfirmPassword = "P@#$word!23"
+            };
+
+            //Assert
+            Assert.Equal(p.Password, p.ConfirmPassword);
+        }
+
+        [Fact]
+        public void CityStateIsString()
+        {
+            // Arrange
+            var p = new User
+            {
+
+                //Act
+                CityState = "Seattle, WA"
+            };
+
+            //Assert
+            Assert.IsType<string>(p.CityState);
+        }
+
+        [Fact]
+        public void FullNamesMatch()
+        {
+            // Arrange
+            var p = new RegisterViewModel
+            {
+                //Act
+                FullName = "Diana Prince"
+            };
+
+            var m = new User
+            {
+                //Act
+                FullName = "Diana Prince"
+            };
+
+            //Assert
+            Assert.Equal(p.FullName, m.FullName);
+        }
+
+        [Fact]
+        public void LoginandRegisterEmailsMatch()
+        {
+            // Arrange
+            var p = new RegisterViewModel
+            {
+                //Act
+                Email = "test@gmail.com"
+            };
+
+            var m = new LoginViewModel
+            {
+                //Act
+                Email = "test@gmail.com"
+            };
+
+            //Assert
+            Assert.Equal(p.Email, m.Email);
+        }
     }
 }
