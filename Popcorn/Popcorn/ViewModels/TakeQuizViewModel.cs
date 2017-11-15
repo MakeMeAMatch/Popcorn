@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Popcorn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Popcorn.Models
+namespace Popcorn.ViewModels
 {
-    public class Questions
+    public class TakeQuizViewModel
     {
         public int Id
         {
@@ -23,5 +24,8 @@ namespace Popcorn.Models
         {
             get; set;
         }
+
+        Questions Q1Q = new Questions();
+        
     }
 }
