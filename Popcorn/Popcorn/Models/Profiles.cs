@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Models
 {
-    public class Users
+    public class Profiles
     {
         public int Id { get; set; }
         // Each User with their associated set of optional responses

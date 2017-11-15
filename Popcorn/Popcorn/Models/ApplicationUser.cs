@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Models
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         [Required]
         [StringLength(30, MinimumLength = 2)]

@@ -12,11 +12,11 @@ namespace Popcorn.Controllers
     //Inheriting from Controller
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         //Constructor that passes in usermanager and signInManager on page load
-        public AccountController(UserManager<User> usermanager, SignInManager<User> signInManager)
+        public AccountController(UserManager<ApplicationUser> usermanager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = usermanager;
             _signInManager = signInManager;
@@ -37,7 +37,7 @@ namespace Popcorn.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = rvm.Email, FirstName = rvm.FirstName, LastName = rvm.LastName, FullName = rvm.FirstName + " " + rvm.LastName, KidAgeRanges = rvm.KidAgeRanges, NumberOfKids = rvm.NumberOfKids, CityState= rvm.CityState, DateOfBirth = rvm.DateOfBirth, PlaySpots = rvm.PlaySpots };
+                var user = new ApplicationUser { UserName = rvm.Email, FirstName = rvm.FirstName, LastName = rvm.LastName, FullName = rvm.FirstName + " " + rvm.LastName, KidAgeRanges = rvm.KidAgeRanges, NumberOfKids = rvm.NumberOfKids, CityState= rvm.CityState, DateOfBirth = rvm.DateOfBirth, PlaySpots = rvm.PlaySpots };
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
                 //if user was successfully registered
@@ -115,7 +115,7 @@ namespace Popcorn.Controllers
 
                 if (info == null) { return RedirectToAction(nameof(Login)); }
 
-                var user = new User { UserName = elm.Email, Email = elm.Email };
+                var user = new ApplicationUser { UserName = elm.Email, Email = elm.Email };
 
                 var result = await _userManager.CreateAsync(user);
 

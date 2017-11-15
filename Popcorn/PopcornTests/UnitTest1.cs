@@ -20,7 +20,7 @@ namespace PopcornTests
         public void CanChangeFirstName()
         {
             // Arrange
-            var m = new User { FirstName = "John" };
+            var m = new ApplicationUser { FirstName = "John" };
 
             //Act
             m.FirstName = "Tom";
@@ -53,7 +53,7 @@ namespace PopcornTests
         public void DOBIsDateTime()
         {
             // Arrange
-            var p = new User
+            var p = new ApplicationUser
             {
 
                 //Act
@@ -68,7 +68,7 @@ namespace PopcornTests
         public void CanChangeDOB()
         {
             // Arrange
-            var p = new User { DateOfBirth = (new DateTime(1999, 12, 14)) };
+            var p = new ApplicationUser { DateOfBirth = (new DateTime(1999, 12, 14)) };
 
             //Act
             p.DateOfBirth = (new DateTime(1989, 8, 18));
@@ -109,7 +109,7 @@ namespace PopcornTests
         public void FullNameIsString()
         {
             // Arrange
-            var p = new User
+            var p = new ApplicationUser
             {
 
                 //Act
@@ -124,7 +124,7 @@ namespace PopcornTests
         public void CanChangeFullName()
         {
             // Arrange
-            var m = new User { FullName = "Clark Kent" };
+            var m = new ApplicationUser { FullName = "Clark Kent" };
 
             //Act
             m.FullName = "Bruce Wayne";
@@ -152,7 +152,7 @@ namespace PopcornTests
         public void PlaySpotsIsInt()
         {
             // Arrange
-            var p = new User
+            var p = new ApplicationUser
             {
 
                 //Act
@@ -167,7 +167,7 @@ namespace PopcornTests
         public void CanChangeNumberOfKids()
         {
             // Arrange
-            var m = new User { NumberOfKids = 1 };
+            var m = new ApplicationUser { NumberOfKids = 1 };
 
             //Act
             m.NumberOfKids = 2;
@@ -208,7 +208,7 @@ namespace PopcornTests
         public void CanChangeLastName()
         {
             // Arrange
-            var m = new User { LastName = "Wayne" };
+            var m = new ApplicationUser { LastName = "Wayne" };
 
             //Act
             m.LastName = "Kent";
@@ -221,7 +221,7 @@ namespace PopcornTests
         public void NumberOfKidsIsInt()
         {
             // Arrange
-            var p = new User
+            var p = new ApplicationUser
             {
 
                 //Act
@@ -267,7 +267,7 @@ namespace PopcornTests
         public void CityStateIsString()
         {
             // Arrange
-            var p = new User
+            var p = new ApplicationUser
             {
 
                 //Act
@@ -288,7 +288,7 @@ namespace PopcornTests
                 FullName = "Diana Prince"
             };
 
-            var m = new User
+            var m = new ApplicationUser
             {
                 //Act
                 FullName = "Diana Prince"
