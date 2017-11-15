@@ -77,10 +77,17 @@ namespace Popcorn.Controllers
 
             //TODO: Update on behavior on what to do if id is less than 1
             return View();
+        }
 
+        public IActionResult DaddyLikes()
+        {
+            
+            return View();
+        }
 
-
-
+        public IActionResult IsLiked()
+        {
+            return View();
         }
     }
 }
