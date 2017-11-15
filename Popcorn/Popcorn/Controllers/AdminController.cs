@@ -26,7 +26,7 @@ namespace Popcorn.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Admin");
         }
 
         //Get all user profiles
