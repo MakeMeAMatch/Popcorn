@@ -11,26 +11,15 @@ using System;
 namespace Popcorn.Migrations.PopcornDb
 {
     [DbContext(typeof(PopcornDbContext))]
-    partial class PopcornDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171115180719_TableAdded")]
+    partial class TableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Popcorn.Models.Answers", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Answer");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Answers");
-                });
 
             modelBuilder.Entity("Popcorn.Models.Matches", b =>
                 {
@@ -67,17 +56,13 @@ namespace Popcorn.Migrations.PopcornDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AnswersId");
-
                     b.Property<int>("ApplicationUserId");
-
-                    b.Property<int>("QuestionsId");
 
                     b.Property<int>("ResponsesId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Profiles");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Popcorn.Models.Questions", b =>

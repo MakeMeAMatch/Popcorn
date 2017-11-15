@@ -11,7 +11,8 @@ namespace Popcorn.Models
         {
             get; set;
         }
-        public List<string> Answers
+        //created a list of personality(s) in order to add a list of objects to my database
+        public List<Personality> Answers
         {
             get; set;
         }

@@ -1,26 +1,45 @@
-﻿using Popcorn.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Popcorn.Data;
+using Popcorn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Popcorn.Controllers
 {
-    public class DadfolioController
+    public class DadfolioController : Controller
     {
-        public void TakeQuiz()
+        private readonly PopcornDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public DadfolioController(PopcornDbContext context, UserManager<ApplicationUser> userManager)
         {
-            //string[] questions = new string[] { "Where do you typically take your child(ren) to play?", "Which type of school does your child(ren) attend?", "Where do you fall on the political spectrum?", "What do your kids like to do for fun?", "What is your typical response to the meaning of life?" };
-
-            //string[] answer1 = new string[] {"1", "2", "3" };
-
-            //Array[] answers = new Array[] {answer1 };
-
-            Dictionary<int, string> MyDictionary = new Dictionary<int, string>();
-            Questions q = new Questions();
-            //q.Answers.Add();
-
-            
+            _context = context;
+            _userManager = userManager;
         }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        //public async Task<IActionResult> TakeQuiz()
+        //{
+        //    Dictionary<int, string> MyDictionary = new Dictionary<int, string>();
+        //    Questions q = new Questions();
+
+        //    var Db = Database.Open("DefaultConnection");
+
+        //    var DbProfiles = _context.Profiles;
+        //    var currentUser = await _userManager.GetUserAsync(User);
+        //    MyDictionary = _context.Profiles.Where(w => w.Id == currentUser.Id);
+        //        select
+
+
+
+        //}
     }
 }
