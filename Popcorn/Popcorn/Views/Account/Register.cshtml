@@ -1,4 +1,7 @@
 ﻿@model Popcorn.Models.RegisterViewModel
+@{
+    Layout = "_Layout";
+}
 
 <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
     <div asp-validation-summary="All"></div>
