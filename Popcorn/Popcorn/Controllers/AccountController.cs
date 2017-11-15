@@ -40,9 +40,31 @@ namespace Popcorn.Controllers
                 var user = new ApplicationUser { UserName = rvm.Email, FirstName = rvm.FirstName, LastName = rvm.LastName, FullName = rvm.FirstName + " " + rvm.LastName, KidAgeRanges = rvm.KidAgeRanges, NumberOfKids = rvm.NumberOfKids, CityState= rvm.CityState, DateOfBirth = rvm.DateOfBirth, PlaySpots = rvm.PlaySpots };
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
+
                 //if user was successfully registered
                 if (result.Succeeded)
                 {
+                    //if user registers with admin e-mail, then give them administrator role
+                    if (rvm.Email == "admin@codefellows.com")
+                    {
+                        //Create a list where my claims will be added to
+                        List<Claim> myClaims = new List<Claim>();
+
+                        // claim for the User's role
+                        Claim claim1 = new Claim(ClaimTypes.Role, "Administrator", ClaimValueTypes.String);
+                        myClaims.Add(claim1);
+
+                        var addClaims = await _userManager.AddClaimsAsync(user, myClaims);
+
+                        if (addClaims.Succeeded)
+                        {
+                            await _signInManager.PasswordSignInAsync(rvm.Email, rvm.Password, true, lockoutOnFailure: false);
+
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+
+
                     return RedirectToAction("Index", "Home");
                 }
             }
