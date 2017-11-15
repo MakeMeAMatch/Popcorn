@@ -20,6 +20,6 @@ namespace Popcorn.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Popcorn.Models.ApplicationUser> User { get; set; }
+        public DbSet<Popcorn.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }
