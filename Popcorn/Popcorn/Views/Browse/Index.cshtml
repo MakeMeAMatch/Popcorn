@@ -1,6 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Popcorn.Models.User>
 @{
     Layout = "_Layout";
+}
+
+@foreach (var item in Model)
+{
+    <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
+    <ul>
+        <li>
+            Number of Children: @Html.DisplayFor(modelItem => item.NumberOfKids)
+        </li>
+        <li>
+            Ages of Children: @Html.DisplayFor(modelItem => item.KidAgeRanges)
+        </li>
+    </ul>
 }
