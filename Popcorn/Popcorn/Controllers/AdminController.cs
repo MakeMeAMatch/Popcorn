@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
 {
-    //[Authorize(Policy = "Admin Only")]
+    [Authorize(Policy = "Admin Only")]
     public class AdminController : Controller
     {
         private readonly PopcornDbContext _context;

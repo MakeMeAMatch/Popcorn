@@ -84,7 +84,7 @@ namespace Popcorn
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
 
