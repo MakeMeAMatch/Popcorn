@@ -19,5 +19,7 @@ namespace Popcorn.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Popcorn.Models.User> User { get; set; }
     }
 }

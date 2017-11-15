@@ -9,8 +9,6 @@ namespace Popcorn.Models
 {
     public class User : IdentityUser
     {
-        //public int Id { get; set; }
-
         [Required]
         [StringLength(30, MinimumLength = 2)]
         [Display(Name = "First Name")]
@@ -41,10 +39,6 @@ namespace Popcorn.Models
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
-
-        //[Required]
-        //[DataType(DataType.EmailAddress)]
-        //public string Email { get; set; }
 
         [Required]
         [Display(Name = "Play Spots")]

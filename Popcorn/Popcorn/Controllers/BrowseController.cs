@@ -47,24 +47,47 @@ namespace Popcorn.Controllers
         {
             if (id > 0)
             {
-                List<Users> UserProfiles = new List<Users>();
-
                 var DbUsers = _context.Users;
-
-                //var currentUser = await _userManager.FindByIdAsync(User.Identity.GetUserId);
+                
                 var currentUser = await _userManager.GetUserAsync(User);
 
+                IQueryable<User> results;
+
+                // Demonstration of using both lambda and SQL Queries to get information we want from a larger data set
+                if (quality == "CityState")
+                {
+                    results = DbUsers.Where(w => w.CityState == currentUser.CityState);
+                }
+                else if (quality == "PlaySpots")
+                {
+                    results = from w in DbUsers
+                              where w.PlaySpots == currentUser.PlaySpots
+                              select w;
+                }
+                else
+                {
+                    results = from w in DbUsers
+                              where w.KidAgeRanges == currentUser.KidAgeRanges
+                              select w;
+                }
                 
-                return View();
+                return View(results);
                 
             }
 
             //TODO: Update on behavior on what to do if id is less than 1
             return View();
+        }
 
+        public IActionResult DaddyLikes()
+        {
+            
+            return View();
+        }
 
-
-
+        public IActionResult IsLiked()
+        {
+            return View();
         }
     }
 }
