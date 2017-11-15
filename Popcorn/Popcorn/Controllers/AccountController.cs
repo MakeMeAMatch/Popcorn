@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Popcorn.Models;
 using System;
@@ -95,6 +96,21 @@ namespace Popcorn.Controllers
                     }
                     else
                     {
+                        var userIdentity = new ClaimsIdentity("Dad");
+                        var userPrincipal = new ClaimsPrincipal(userIdentity);
+
+                        User.AddIdentity(userIdentity);
+
+                        await HttpContext.SignInAsync(
+                        "MyCookieLogin", userPrincipal,
+                            new AuthenticationProperties
+                            {
+                                ExpiresUtc = DateTime.UtcNow.AddMinutes(30),
+                                IsPersistent = false,
+                                AllowRefresh = false
+
+                            });
+
                         return RedirectToAction("Index", "Home");
                     }
                 }
