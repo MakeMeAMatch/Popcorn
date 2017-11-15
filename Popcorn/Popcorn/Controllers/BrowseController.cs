@@ -15,11 +15,11 @@ namespace Popcorn.Controllers
     public class BrowseController : Controller
     {
         //dependency injection
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         //adding user manager in order to ID the current user
         private readonly ApplicationDbContext _context;
 
-         public BrowseController(ApplicationDbContext context, UserManager<User> userManager)
+         public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -27,7 +27,7 @@ namespace Popcorn.Controllers
 
         public IActionResult Index()
         {
-            List<User> UserProfiles = new List<User>();
+            List<ApplicationUser> UserProfiles = new List<ApplicationUser>();
 
             //add roles and claims here
 
@@ -51,7 +51,7 @@ namespace Popcorn.Controllers
                 
                 var currentUser = await _userManager.GetUserAsync(User);
 
-                IQueryable<User> results;
+                IQueryable<ApplicationUser> results;
 
                 // Demonstration of using both lambda and SQL Queries to get information we want from a larger data set
                 if (quality == "CityState")

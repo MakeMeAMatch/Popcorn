@@ -16,7 +16,7 @@ namespace Popcorn.Data
 
         public DbSet<Responses> Responses { get; set; }
         public DbSet<Matches> Matches { get; set; }
-        public DbSet<Users> Users { get; set; }
+        public DbSet<Profiles> Users { get; set; }
 
     }
 }

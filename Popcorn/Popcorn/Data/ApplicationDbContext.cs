@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -20,6 +20,6 @@ namespace Popcorn.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Popcorn.Models.User> User { get; set; }
+        public DbSet<Popcorn.Models.ApplicationUser> User { get; set; }
     }
 }
