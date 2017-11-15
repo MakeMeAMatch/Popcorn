@@ -11,6 +11,7 @@ using Popcorn.Models;
 using Popcorn.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Popcorn
 {
@@ -69,6 +70,10 @@ namespace Popcorn
             {
                 options.AddPolicy("Admin Only", policy => policy.RequireRole("Administrator"));
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie("MyCookieLogin", options =>
+                options.AccessDeniedPath = new PathString("/Account/Forbidden/"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

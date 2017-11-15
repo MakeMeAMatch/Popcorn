@@ -1,18 +1,7 @@
-﻿@model IEnumerable<Popcorn.Models.Profiles>
+﻿@model IEnumerable<Popcorn.Models.ApplicationUser>
 
 @{
     Layout = "_Layout";
 }
 
-@foreach (var item in Model)
-{
-    <h2>@Html.DisplayFor(modelItem => item.Id)</h2>
-    <ul>
-        <li>
-            Number of Children: @Html.DisplayFor(modelItem => item.UserId)
-        </li>
-        <li>
-            Ages of Children: @Html.DisplayFor(modelItem => item.ResponsesId)
-        </li>
-    </ul>
-}
+This is the Admin View
