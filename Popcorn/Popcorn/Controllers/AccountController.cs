@@ -63,9 +63,10 @@ namespace Popcorn.Controllers
                             return RedirectToAction("Index", "Admin");
                         }
                     }
-
-
-                    return RedirectToAction("Index", "Home");
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
             return View();
@@ -90,9 +91,7 @@ namespace Popcorn.Controllers
                 {
                     if (lvm.Email == "admin@codefellows.com")
                     {
-
                         return RedirectToAction("Index", "Admin");
-
                     }
                     else
                     {
