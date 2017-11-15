@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Popcorn.Data;
 using Popcorn.Models;
 using System;
@@ -25,19 +26,42 @@ namespace Popcorn.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string filter)
         {
             List<ApplicationUser> UserProfiles = new List<ApplicationUser>();
 
             //add roles and claims here
 
             var DBUsers = _context.Users;
+            var currentUserId = _userManager.GetUserId(User);
+            var currentUser = _context.Users.Where(u => u.Id == currentUserId).First();
 
-            foreach(var w in DBUsers)
+            IQueryable<ApplicationUser> results;
+
+            if (!String.IsNullOrEmpty(filter))
             {
-                UserProfiles.Add(w);
+                if (filter == "CityState")
+                {
+                    results = DBUsers.Where(w => w.CityState == currentUser.CityState);
+                }
+                else if (filter == "PlaySpots")
+                {
+                    results = from w in DBUsers
+                              where w.PlaySpots == currentUser.PlaySpots
+                              select w;
+                }
+                else
+                {
+                    results = from w in DBUsers
+                              where w.KidAgeRanges == currentUser.KidAgeRanges
+                              select w;
+                }
             }
-            return View(UserProfiles);
+            else
+            {
+                results = DBUsers;
+            }
+            return View(results);
         }
 
         //this action will affect which user profile results are displayed based on which quality is chosen by the user
