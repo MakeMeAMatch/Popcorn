@@ -63,6 +63,12 @@ namespace Popcorn
                 facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
+
+            //Admin Policy
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin Only", policy => policy.RequireRole("Administrator"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
