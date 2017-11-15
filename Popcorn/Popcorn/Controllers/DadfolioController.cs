@@ -13,7 +13,9 @@ namespace Popcorn.Controllers
 
             string[] answer1 = new string[] {"1", "2", "3" };
 
-            Array[] answers = new Array[] { };
+            Array[] answers = new Array[] {answer1 };
+
+            
         }
     }
 }
