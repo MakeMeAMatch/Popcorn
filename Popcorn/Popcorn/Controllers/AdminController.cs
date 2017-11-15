@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Popcorn.Data;
 using Popcorn.Models;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
 {
+    [Authorize(Policy = "Admin Only")]
     public class AdminController : Controller
     {
         //dependency injection
