@@ -15,5 +15,10 @@ namespace Popcorn.Models
         {
             get; set;
         }
+        public int QuestionsId
+        {
+            get; set;
+        }
+
     }
 }
