@@ -20,9 +20,5 @@ namespace Popcorn.Models
         {
             get; set;
         }
-        Dictionary<int, string> Dictionary
-        {
-            get; set;
-        }
     }
 }

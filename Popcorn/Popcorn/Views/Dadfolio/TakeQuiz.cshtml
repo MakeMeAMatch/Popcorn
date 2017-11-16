@@ -5,19 +5,20 @@
 }
 <h2>Answer these questions to get better matches!</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <h3>Answers</h3>
-            </th>
-            <th>
-                <h3>QuestionText</h3>
-            </th>
-            <th>
-                <h3>Answers</h3>
-            </th>
-        </tr>
-    </thead>
+@ViewBag.UserQuestions;
+@ViewBag.UserAnswers;
 
-</table>
+@{
+    int j = 1;
+    foreach(var w in @ViewBag.UserQuestions)
+    {
+       <p>Question 1: @w.QuestionText</p>
+
+        for(int i=0; i < 3; i++)
+        {
+            @*<p>@ViewBag.UserAnswers.Where(v => v.Id == j).Answer</p>*@
+
+        }
+
+    }
+}
