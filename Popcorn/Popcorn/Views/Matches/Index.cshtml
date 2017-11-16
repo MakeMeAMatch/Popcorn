@@ -1,3 +1,19 @@
-﻿@{
+﻿@model IEnumerable<Popcorn.Models.ApplicationUser>
+@{
     Layout = "_Layout";
+}
+<h1>Your Matches!</h1>
+
+@foreach (var user in Model)
+{
+    <h2>@Html.DisplayFor(modelItem => user.FirstName)</h2>
+    <ul>
+        <li>
+            Number of Children: @Html.DisplayFor(modelItem => user.NumberOfKids)
+        </li>
+        <li>
+            Age Range of Children: @Html.DisplayFor(modelItem => user.KidAgeRanges)
+        </li>
+    </ul>
+
 }
