@@ -120,7 +120,7 @@ namespace Popcorn.Controllers
             await _popcornContext.SaveChangesAsync();
             var allMatches = _popcornContext.Matches;
             var isMatch = allMatches.Where(m => m.UserMatchedId == currentUser.Id && m.UserMatchingId == targetId);
-            if (isMatch != null)
+            if (isMatch.First() != null)
             {
                 // Notify both Users in some way
             }
