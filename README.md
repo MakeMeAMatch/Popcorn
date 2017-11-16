@@ -1,4 +1,4 @@
-# final_project: Alright Books
+# final_project: Popcorn
 
 #team members
 Brandon Little, Miya Lucas, Thomas Reyes
