@@ -36,6 +36,7 @@ namespace Popcorn.Controllers
             var currentUserId = _userManager.GetUserId(User);
             var currentUser = _context.Users.Where(u => u.Id == currentUserId).First();
 
+            //any variety of data structure that implements from IQueryable
             IQueryable<ApplicationUser> results;
 
             if (!String.IsNullOrEmpty(filter))

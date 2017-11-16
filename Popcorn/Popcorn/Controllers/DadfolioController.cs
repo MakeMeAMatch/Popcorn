@@ -4,9 +4,9 @@ using Popcorn.Data;
 using Popcorn.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Popcorn.Controllers
 {
@@ -26,20 +26,18 @@ namespace Popcorn.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> TakeQuiz()
-        //{
-        //    Dictionary<int, string> MyDictionary = new Dictionary<int, string>();
-        //    Questions q = new Questions();
+        public IActionResult TakeQuiz()
+        {
+            //Questions q = new Questions();
 
-        //    var Db = Database.Open("DefaultConnection");
+            //var DbProfiles = _context.Profiles;
+            //var currentUser = await _userManager.GetUserAsync(User);
+            //var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
+            ViewBag.UserQuestions = _context.Questions;
+            ViewBag.UserAnswers = _context.Answers;
 
-        //    var DbProfiles = _context.Profiles;
-        //    var currentUser = await _userManager.GetUserAsync(User);
-        //    MyDictionary = _context.Profiles.Where(w => w.Id == currentUser.Id);
-        //        select
+            return View();           
 
-
-
-        //}
+        }
     }
 }
