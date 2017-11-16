@@ -24,8 +24,10 @@
                 <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-controller="Browse" asp-action="Index">Browse</a></li>
                 <li><a asp-controller="Matches" asp-action="Index">Matches</a></li>
+                <li><a asp-controller="Dadfolio" asp-action="TakeQuiz">Dadfolio</a></li>
                 <li><a asp-controller="Account" asp-action="Login">Login</a></li>
                 <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+
             </ul>
         </div>
     </nav>
@@ -35,7 +37,7 @@
     <div>
         @if (!User.Identities.Any(u => u.IsAuthenticated))
         {
-            <span>Welcome, stranger!</span>
+            <span>Welcome, guest!</span>
 
         }
         else

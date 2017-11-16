@@ -28,7 +28,13 @@
     <span asp-validation-for="LastName"></span> <br /> <br />
 
     <label asp-for="KidAgeRanges"></label>
-    <input asp-for="KidAgeRanges" />
+    <select asp-for="KidAgeRanges">
+        <option value="Infant (0-12 months)">Infant (0-12 months)</option>
+        <option value="Toddler (1-3 years)">Toddler (1-3 years)</option>
+        <option value="Pre-School (3-5 years)">Pre-School (3-5 years)</option>
+        <option value="Pre-adolescent (5-12 years)">Pre-adolescent (5-12 years)</option>
+        <option value="Adolescent (12-18 years)">Adolescent (12-18 years)</option>
+    </select>
     <span asp-validation-for="KidAgeRanges"></span> <br /> <br />
 
     <label asp-for="NumberOfKids"></label>
@@ -44,10 +50,16 @@
     <span asp-validation-for="DateOfBirth"></span> <br /> <br />
 
     <label asp-for="PlaySpots"></label>
-    <input asp-for="PlaySpots" />
+    <select asp-for="PlaySpots">
+        <option value="Park">Park</option>
+        <option value="Library">Library</option>
+        <option value="Fieldtrip">Fieldtrip</option>
+        <option value="Home">Home</option>
+    </select>
     <span asp-validation-for="PlaySpots"></span> <br /> <br />
 
 
     <button type="submit">Register</button>
+
 
 </form>

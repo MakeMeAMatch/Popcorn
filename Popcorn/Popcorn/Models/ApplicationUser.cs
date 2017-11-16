@@ -24,7 +24,7 @@ namespace Popcorn.Models
 
         [Required]
         [Display(Name = "Children Age Range(s)")]
-        public int KidAgeRanges { get; set; }
+        public string KidAgeRanges { get; set; }
 
         [Required]
         [Display(Name = "Number of Children")]
@@ -41,8 +41,8 @@ namespace Popcorn.Models
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        [Display(Name = "Play Spots")]
-        public int PlaySpots { get; set; }
+        [Display(Name = "Favorite Play Spot")]
+        public string PlaySpots { get; set; }
 
     }
 }

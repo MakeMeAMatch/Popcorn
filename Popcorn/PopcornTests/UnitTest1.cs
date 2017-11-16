@@ -156,7 +156,7 @@ namespace PopcornTests
             {
 
                 //Act
-                PlaySpots = 5
+                PlaySpots = "Park"
             };
 
             //Assert
