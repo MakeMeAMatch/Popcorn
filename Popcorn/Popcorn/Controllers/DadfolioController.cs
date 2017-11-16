@@ -33,6 +33,8 @@ namespace Popcorn.Controllers
             //var DbProfiles = _context.Profiles;
             //var currentUser = await _userManager.GetUserAsync(User);
             //var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
+            List<Answers> answerList = _context.Answers.ToList();
+            ViewBag.Answers = answerList;
             ViewBag.UserQuestions = _context.Questions;
             ViewBag.UserAnswers = _context.Answers;
 

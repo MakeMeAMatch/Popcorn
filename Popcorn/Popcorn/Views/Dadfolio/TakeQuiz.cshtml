@@ -1,24 +1,43 @@
-﻿@model Popcorn.ViewModels.TakeQuizViewModel
+﻿@model Popcorn.ViewModels.TakeQuizViewModel;
+
 
 @{
     Layout = "_Layout";
 }
 <h2>Answer these questions to get better matches!</h2>
 
-@ViewBag.UserQuestions;
-@ViewBag.UserAnswers;
-
 @{
     int j = 1;
-    foreach(var w in @ViewBag.UserQuestions)
+    foreach (var w in @ViewBag.UserQuestions)
     {
-       <p>Question 1: @w.QuestionText</p>
-
-        for(int i=0; i < 3; i++)
+        @using (Html.BeginForm())
         {
-            @*<p>@ViewBag.UserAnswers.Where(v => v.Id == j).Answer</p>*@
+            @Html.ValidationSummary()
+
+            <p>Question @j: @w.QuestionText</p>
+            j++;
+
+            foreach (var answer in ViewBag.UserAnswers)
+            {
+                if (answer.QuestionsId == w.Id)
+                {
+                    <p>@answer.Answer</p>
+                }
+            }
 
         }
 
+
+
     }
 }
+
+@*@using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <fieldset>
+            <legend>Take the Quiz</legend>
+            <div class="quiz-label">@Html.LabelFor(model => model.QuestionText)</div>
+        </fieldset>
+
+    }*@

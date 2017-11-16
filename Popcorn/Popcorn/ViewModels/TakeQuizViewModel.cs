@@ -24,8 +24,5 @@ namespace Popcorn.ViewModels
         {
             get; set;
         }
-
-        Questions Q1Q = new Questions();
-        
-    }
+   }
 }

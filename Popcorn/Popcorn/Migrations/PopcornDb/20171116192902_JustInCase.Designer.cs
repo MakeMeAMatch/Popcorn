@@ -11,9 +11,10 @@ using System;
 namespace Popcorn.Migrations.PopcornDb
 {
     [DbContext(typeof(PopcornDbContext))]
-    partial class PopcornDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171116192902_JustInCase")]
+    partial class JustInCase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +40,9 @@ namespace Popcorn.Migrations.PopcornDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("UserMatchedId");
+                    b.Property<int>("UserMatchedId");
 
-                    b.Property<string>("UserMatchingId");
+                    b.Property<int>("UserMatchingId");
 
                     b.HasKey("Id");
 
