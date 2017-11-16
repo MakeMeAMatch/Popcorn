@@ -19,11 +19,13 @@ namespace Popcorn.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         //adding user manager in order to ID the current user
         private readonly ApplicationDbContext _context;
+        private readonly PopcornDbContext _popcornContext;
 
-         public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, PopcornDbContext popcornContext)
         {
             _userManager = userManager;
             _context = context;
+            _popcornContext = popcornContext;
         }
 
         public IActionResult Index(string filter)
@@ -73,7 +75,7 @@ namespace Popcorn.Controllers
             if (id > 0)
             {
                 var DbUsers = _context.Users;
-                
+
                 var currentUser = await _userManager.GetUserAsync(User);
 
                 IQueryable<ApplicationUser> results;
@@ -95,19 +97,35 @@ namespace Popcorn.Controllers
                               where w.KidAgeRanges == currentUser.KidAgeRanges
                               select w;
                 }
-                
+
                 return View(results);
-                
+
             }
 
             //TODO: Update on behavior on what to do if id is less than 1
             return View();
         }
 
-        public IActionResult DaddyLikes()
+        // Create new Matches entry with the current User's Id and the Id of the User being "liked". 
+        // Checks to see if there is a reciprocal match in the database and causes a "match" notification if there is
+        public async Task<IActionResult> DaddyLikes(string targetId)
         {
-            
-            return View();
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            Matches newLike = new Matches()
+            {
+                UserMatchingId = currentUser.Id,
+                UserMatchedId = targetId
+            };
+            _popcornContext.Matches.Add(newLike);
+            await _popcornContext.SaveChangesAsync();
+            var allMatches = _popcornContext.Matches;
+            var isMatch = allMatches.Where(m => m.UserMatchedId == currentUser.Id && m.UserMatchingId == targetId);
+            if (isMatch != null)
+            {
+                // Notify both Users in some way
+            }
+            return RedirectToAction("Index", "Browse");
         }
 
         public IActionResult IsLiked()
