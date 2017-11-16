@@ -106,6 +106,8 @@ namespace Popcorn.Controllers
             return View();
         }
 
+        // Create new Matches entry with the current User's Id and the Id of the User being "liked". 
+        // Checks to see if there is a reciprocal match in the database and causes a "match" notification if there is
         public async Task<IActionResult> DaddyLikes(string targetId)
         {
             var currentUser = await _userManager.GetUserAsync(User);
