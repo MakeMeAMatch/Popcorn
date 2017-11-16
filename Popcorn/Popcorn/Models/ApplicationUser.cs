@@ -41,7 +41,7 @@ namespace Popcorn.Models
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        [Display(Name = "Play Spots")]
+        [Display(Name = "Favorite Play Spot")]
         public string PlaySpots { get; set; }
 
     }
