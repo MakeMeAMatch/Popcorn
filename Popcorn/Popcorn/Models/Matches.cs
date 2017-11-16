@@ -9,8 +9,8 @@ namespace Popcorn.Models
     {
         public int Id { get; set; }
         // User that selected another user
-        public int UserMatchingId { get; set; }
+        public string UserMatchingId { get; set; }
         // User that was selected
-        public int UserMatchedId { get; set; }
+        public string UserMatchedId { get; set; }
     }
 }

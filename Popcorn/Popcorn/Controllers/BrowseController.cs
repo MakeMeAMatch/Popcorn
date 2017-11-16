@@ -19,11 +19,13 @@ namespace Popcorn.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         //adding user manager in order to ID the current user
         private readonly ApplicationDbContext _context;
+        private readonly PopcornDbContext _popcornContext;
 
-         public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+         public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, PopcornDbContext popcornContext)
         {
             _userManager = userManager;
             _context = context;
+            _popcornContext = popcornContext;
         }
 
         public IActionResult Index(string filter)
@@ -104,10 +106,23 @@ namespace Popcorn.Controllers
             return View();
         }
 
-        public IActionResult DaddyLikes()
+        public async Task<IActionResult> DaddyLikes(string targetId)
         {
-            
-            return View();
+            var currentUser = await _userManager.GetUserAsync(User);
+            Matches newLike = new Matches()
+            {
+                UserMatchingId = currentUser.Id,
+                UserMatchedId = targetId
+            };
+            _popcornContext.Matches.Add(newLike);
+            await _popcornContext.SaveChangesAsync();
+            var allMatches = _popcornContext.Matches;
+            var isMatch = allMatches.Where(m => m.UserMatchedId == currentUser.Id && m.UserMatchingId == targetId);
+            if (isMatch != null)
+            {
+                // Notify both Users in some way
+            }
+            return RedirectToAction("Index", "Browse");
         }
 
         public IActionResult IsLiked()
