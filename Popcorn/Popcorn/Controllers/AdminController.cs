@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Popcorn.Controllers
 {
+    //Requires Administrator Role
     [Authorize(Policy = "Admin Only")]
     public class AdminController : Controller
     {
@@ -45,8 +46,6 @@ namespace Popcorn.Controllers
 
 
         [HttpGet]
-
-
         //Delete a user profile
         [HttpDelete]
         public async Task<IActionResult> Delete(string id)
@@ -57,7 +56,7 @@ namespace Popcorn.Controllers
                 //Remove selected Id and all associated data
                 _context.ApplicationUser.Remove(result);
                 await _context.SaveChangesAsync();
-                return Ok();
+                return RedirectToAction("Index", "Admin");
             }
             return BadRequest();
 
