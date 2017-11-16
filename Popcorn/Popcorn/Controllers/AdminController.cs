@@ -43,6 +43,10 @@ namespace Popcorn.Controllers
             return Ok(result);
         }
 
+
+        [HttpGet]
+
+
         //Delete a user profile
         [HttpDelete]
         public async Task<IActionResult> Delete(string id)
