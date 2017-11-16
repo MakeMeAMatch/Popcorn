@@ -11,9 +11,10 @@ using System;
 namespace Popcorn.Migrations.PopcornDb
 {
     [DbContext(typeof(PopcornDbContext))]
-    partial class PopcornDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171116193422_MatchesUpdate")]
+    partial class MatchesUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

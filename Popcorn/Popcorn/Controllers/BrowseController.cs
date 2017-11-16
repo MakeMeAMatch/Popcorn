@@ -21,7 +21,7 @@ namespace Popcorn.Controllers
         private readonly ApplicationDbContext _context;
         private readonly PopcornDbContext _popcornContext;
 
-         public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, PopcornDbContext popcornContext)
+        public BrowseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, PopcornDbContext popcornContext)
         {
             _userManager = userManager;
             _context = context;
@@ -75,7 +75,7 @@ namespace Popcorn.Controllers
             if (id > 0)
             {
                 var DbUsers = _context.Users;
-                
+
                 var currentUser = await _userManager.GetUserAsync(User);
 
                 IQueryable<ApplicationUser> results;
@@ -97,9 +97,9 @@ namespace Popcorn.Controllers
                               where w.KidAgeRanges == currentUser.KidAgeRanges
                               select w;
                 }
-                
+
                 return View(results);
-                
+
             }
 
             //TODO: Update on behavior on what to do if id is less than 1
@@ -110,6 +110,7 @@ namespace Popcorn.Controllers
         // Checks to see if there is a reciprocal match in the database and causes a "match" notification if there is
         public async Task<IActionResult> DaddyLikes(string targetId)
         {
+
             var currentUser = await _userManager.GetUserAsync(User);
             Matches newLike = new Matches()
             {
@@ -120,7 +121,7 @@ namespace Popcorn.Controllers
             await _popcornContext.SaveChangesAsync();
             var allMatches = _popcornContext.Matches;
             var isMatch = allMatches.Where(m => m.UserMatchedId == currentUser.Id && m.UserMatchingId == targetId);
-            if (isMatch.First() != null)
+            if (isMatch != null)
             {
                 // Notify both Users in some way
             }

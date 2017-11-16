@@ -14,4 +14,7 @@
             Ages of Children: @Html.DisplayFor(modelItem => item.KidAgeRanges)
         </li>
     </ul>
+        <a asp-action="DaddyLikes" asp-controller="Browse" asp-for="TargetId" asp-route-targetId="@item.Id" id="targetId" value="Pop!">Pop!</a>
+
 }
+
