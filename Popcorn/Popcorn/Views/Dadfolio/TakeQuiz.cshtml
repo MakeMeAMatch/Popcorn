@@ -1,4 +1,4 @@
-﻿@model Popcorn.ViewModels.TakeQuizViewModel;
+﻿@model Popcorn.ViewModels.TakeQuizViewModel
 
 
 @{
@@ -7,6 +7,7 @@
 <h2>Answer these questions to get better matches!</h2>
 
 @{
+    //j keeps track of each question and the answers assigned to each question
     int j = 1;
     foreach (var w in @ViewBag.UserQuestions)
     {
@@ -21,23 +22,12 @@
             {
                 if (answer.QuestionsId == w.Id)
                 {
-                    <p>@answer.Answer</p>
+                    @Html.RadioButtonFor(
+                    m => m.Answers, "Answers")
+                   <p>@answer.Answer</p>
                 }
             }
 
         }
-
-
-
     }
 }
-
-@*@using (Html.BeginForm())
-    {
-        @Html.ValidationSummary()
-        <fieldset>
-            <legend>Take the Quiz</legend>
-            <div class="quiz-label">@Html.LabelFor(model => model.QuestionText)</div>
-        </fieldset>
-
-    }*@

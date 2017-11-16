@@ -28,8 +28,6 @@ namespace Popcorn.Controllers
 
         public IActionResult TakeQuiz()
         {
-            //Questions q = new Questions();
-
             //var DbProfiles = _context.Profiles;
             //var currentUser = await _userManager.GetUserAsync(User);
             //var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
