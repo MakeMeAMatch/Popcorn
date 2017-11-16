@@ -13,10 +13,10 @@ namespace Popcorn.Controllers
     [Authorize(Policy = "Admin Only")]
     public class AdminController : Controller
     {
-        private readonly PopcornDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminController(PopcornDbContext context, UserManager<ApplicationUser> userManager)
+        public AdminController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -24,32 +24,34 @@ namespace Popcorn.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var DBUsers = _context.Users;
+
+            return View(DBUsers);
         }
 
         //Get all user profiles
         [HttpGet]
-        public IEnumerable<Profiles> Get()
+        public IEnumerable<ApplicationUser> Get()
         {
-            return _context.Profiles;
+            return _context.ApplicationUser;
         }
 
         [HttpGet]
-        public IActionResult Get(int id)
+        public IActionResult Get(string id)
         {
-            var result = _context.Profiles.FirstOrDefault(h => h.Id == id);
+            var result = _context.ApplicationUser.FirstOrDefault(h => h.Id == id);
             return Ok(result);
         }
 
         //Delete a user profile
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
-            var result = _context.Profiles.FirstOrDefault(d => d.Id == id);
+            var result = _context.ApplicationUser.FirstOrDefault(d => d.Id == id);
             if (result != null)
             {
                 //Remove selected Id and all associated data
-                _context.Profiles.Remove(result);
+                _context.ApplicationUser.Remove(result);
                 await _context.SaveChangesAsync();
                 return Ok();
             }
