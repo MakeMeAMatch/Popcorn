@@ -2,11 +2,33 @@
      opacity: 0.8;
      margin-left: 17em;
      margin-bottom: 1em;
+     position: relative;
+     width: 100%;
 }
 
 #socialButtons{
     width: 75px;
     height: 25px;
     font-size: 14px;
+}
+
+.hover {
+    position: absolute;
+    top: 200px;
+    left: 2.3em;
+    width: 100%;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 10em;
+    font-weight: bold;
+
+}
+
+p.baby-hover {
+    position: absolute;
+    top: 400px;
+    font-size: 2em;
+    font-weight: bold;
+    left: 7em;
+    color: black;
 }
 
