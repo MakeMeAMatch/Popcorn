@@ -11,9 +11,10 @@
 }
 
 #newdad{
-    width: 250px;
-    float: right;
-    margin-top: -10em;
+    width: 450px;
+    position:absolute;
+    top: 20em;
+    right: 12em;
 }
 
 #dadtwokids {
