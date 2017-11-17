@@ -183,7 +183,11 @@ namespace Popcorn.Controllers
             return View(nameof(ExternalLogin), elm);
         }
 
-
+        public IActionResult Logout()
+        {
+            _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
 
         private IActionResult RedirectToLocal(string returnUrl)
