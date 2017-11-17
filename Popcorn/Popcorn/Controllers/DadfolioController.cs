@@ -30,21 +30,24 @@ namespace Popcorn.Controllers
         }
 
         //POST
-        [HttpPost]
+        //[HttpPost]
+        //would change parameter to string answerChoicec instead in order to add response data to response database
         public async Task<IActionResult> TakeQuiz(Profiles profiles)
         {
-            //var DbProfiles = _context.Profiles;
-            //var currentUser = await _userManager.GetUserAsync(User);
-            //var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
+            var DbProfiles = _context.Profiles;
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
+
             List<Answers> answerList = _context.Answers.ToList();
+            ViewBag.Responses = _context.Responses;
             ViewBag.Answers = answerList;
             ViewBag.UserQuestions = _context.Questions;
             ViewBag.UserAnswers = _context.Answers;
 
             await _context.AddAsync(profiles);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");           
+            return View();           
 
         }
 

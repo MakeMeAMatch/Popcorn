@@ -24,5 +24,5 @@ namespace Popcorn.ViewModels
         {
             get; set;
         }
-   }
+    }
 }

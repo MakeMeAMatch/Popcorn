@@ -6,28 +6,39 @@
 }
 <h2>Answer these questions to get better matches!</h2>
 
-@{
-    //j keeps track of each question and the answers assigned to each question
-    int j = 1;
-    foreach (var w in @ViewBag.UserQuestions)
-    {
-        @using (Html.BeginForm())
-        {
-            @Html.ValidationSummary()
-
-            <p>Question @j: @w.QuestionText</p>
-            j++;
-
-            foreach (var answer in ViewBag.UserAnswers)
+<form method="post">
+    <div asp-validation-summary="All">
+        @{
+            //j keeps track of each question and the answers assigned to each question
+            int j = 1;
+            foreach (var w in @ViewBag.UserQuestions)
             {
-                if (answer.QuestionsId == w.Id)
+                @using (Html.BeginForm())
                 {
-                    @Html.RadioButtonFor(
+                    @Html.ValidationSummary()
+
+                    <label asp-for="QuestionText">
+                        <p>Question @j: @w.QuestionText</p>
+                    </label>
+                    j++;
+
+                    foreach (var answer in ViewBag.UserAnswers)
+                    {
+                        if (answer.QuestionsId == w.Id)
+                        {
+                            <br />@Html.RadioButtonFor(
                     m => m.Answers, "Answers")
-                   <p>@answer.Answer</p>
+                            //would move all properties in the Responses model to the Profiles model or ApplicationUser model if we had more time
+                            <label asp-for="Answers"><br />@answer.Answer <br /></label>
+                        }
+                    }
+                    <p></p>
+                    <button type="submit">Submit</button>
+                    //will add this to button later
+                    @*asp-action="TakeQuiz" asp-controller="Dadfolio" asp-for="TargetId" asp-route-targetId="@item.Id" id="answerChoice" value="Testing">Pop!*@
+                    <hr />
                 }
             }
-
         }
-    }
-}
+    </div>
+</form>
