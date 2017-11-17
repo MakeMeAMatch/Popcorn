@@ -3,30 +3,42 @@ using Popcorn.Controllers;
 using Popcorn.Models;
 using System;
 using Xunit;
+using Microsoft.AspNetCore.Identity;
+using Popcorn.Data;
+using System.Threading.Tasks;
+using Popcorn.ViewModels;
 
 namespace PopcornTests
 {
     public class UnitTest1
     {
+        private SignInManager<ApplicationUser> signInManager;
+        private UserManager<ApplicationUser> usermanager;
+
         [Fact]
-        public void CanCreateUser()
+        public void LoginReturnsView()
         {
-            // Arrange
-            // Act
-            // Assert
+            //Arrange
+            var controller = new AccountController(usermanager, signInManager);
+
+            //Act
+            IActionResult result = controller.Login();
+
+            //Assert
+            Assert.IsType<ViewResult>(result);
         }
 
         [Fact]
-        public void CanChangeFirstName()
+        public void RegisterReturnsView()
         {
-            // Arrange
-            var m = new ApplicationUser { FirstName = "John" };
+            //Arrange
+            var controller = new AccountController(usermanager, signInManager);
 
             //Act
-            m.FirstName = "Tom";
+            IActionResult result = controller.Register();
 
             //Assert
-            Assert.Equal("Tom", m.FirstName);
+            Assert.IsType<ViewResult>(result);
         }
 
         [Fact]
@@ -106,6 +118,32 @@ namespace PopcornTests
         }
 
         [Fact]
+        public void HomeIndexReturnsView()
+        {
+            //Arrange
+            var controller = new HomeController();
+
+            //Act
+            IActionResult result = controller.Index();
+
+            //Assert
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public void CanChangeFirstName()
+        {
+            // Arrange
+            var m = new ApplicationUser { FirstName = "John" };
+
+            //Act
+            m.FirstName = "Tom";
+
+            //Assert
+            Assert.Equal("Tom", m.FirstName);
+        }
+
+        [Fact]
         public void FullNameIsString()
         {
             // Arrange
@@ -134,22 +172,7 @@ namespace PopcornTests
         }
 
         [Fact]
-        public void HomeIndexResultIsView()
-        {
-            var controller = new Popcorn.Controllers.HomeController();
-
-            //Arrange
-            HomeController h = new Popcorn.Controllers.HomeController();
-
-            //Act
-            IActionResult result = h.Index();
-
-            //Assert
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
-        public void PlaySpotsIsInt()
+        public void PlaySpotsIsString()
         {
             // Arrange
             var p = new ApplicationUser
@@ -160,7 +183,7 @@ namespace PopcornTests
             };
 
             //Assert
-            Assert.IsType<int>(p.PlaySpots);
+            Assert.IsType<string>(p.PlaySpots);
         }
 
         [Fact]
@@ -446,5 +469,131 @@ namespace PopcornTests
             //Assert
             Assert.Equal(7, m.Sports);
         }
+
+        [Fact]
+        public void CanChangeDiet()
+        {
+            // Arrange
+            var m = new Responses { Diet = 3 };
+
+            //Act
+            m.Diet = 6;
+
+            //Assert
+            Assert.Equal(6, m.Diet);
+        }
+
+        [Fact]
+        public void CanChangeEntertainment()
+        {
+            // Arrange
+            var m = new Responses { Entertainment = 2 };
+
+            //Act
+            m.Entertainment = 8;
+
+            //Assert
+            Assert.Equal(8, m.Entertainment);
+        }
+
+        [Fact]
+        public void CanChangeHonesty()
+        {
+            // Arrange
+            var m = new Responses { HonestySpectrum = 1 };
+
+            //Act
+            m.HonestySpectrum = 2;
+
+            //Assert
+            Assert.Equal(2, m.HonestySpectrum);
+        }
+
+        [Fact]
+        public void QuestionTextIsString()
+        {
+            // Arrange
+            var m = new TakeQuizViewModel
+            {
+
+                //Act
+                QuestionText = "Test"
+            };
+
+            //Assert
+            Assert.IsType<string>(m.QuestionText);
+        }
+
+        [Fact]
+        public void CanChangeQuestionText()
+        {
+            // Arrange
+            var m = new TakeQuizViewModel { QuestionText = "test" };
+
+            //Act
+            m.QuestionText = "testing!";
+
+            //Assert
+            Assert.Equal("testing!", m.QuestionText);
+        }
+
+
+        [Fact]
+        public void UserMatchingIsString()
+        {
+            // Arrange
+            var m = new Matches
+            {
+
+                //Act
+                UserMatchingId = "Test"
+            };
+
+            //Assert
+            Assert.IsType<string>(m.UserMatchingId);
+        }
+
+        [Fact]
+        public void UserMatchedIsString()
+        {
+            // Arrange
+            var m = new Matches
+            {
+
+                //Act
+                UserMatchedId = "Test"
+            };
+
+            //Assert
+            Assert.IsType<string>(m.UserMatchedId);
+        }
+
+        [Fact]
+        public void CanChangeMatchingId()
+        {
+            // Arrange
+            var m = new Matches { UserMatchingId = "test" };
+
+            //Act
+            m.UserMatchingId = "testing!";
+
+            //Assert
+            Assert.Equal("testing!", m.UserMatchingId);
+        }
+
+        [Fact]
+        public void CanChangeMatchedId()
+        {
+            // Arrange
+            var m = new Matches { UserMatchedId = "test" };
+
+            //Act
+            m.UserMatchedId = "testing!";
+
+            //Assert
+            Assert.Equal("testing!", m.UserMatchedId);
+        }
+
+
     }
 }
