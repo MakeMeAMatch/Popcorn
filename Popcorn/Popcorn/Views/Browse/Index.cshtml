@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Popcorn.Models.ApplicationUser>
+
+@*@ViewBag.Profiles*@
+
 @{
     Layout = "_Layout";
 }
@@ -14,7 +17,7 @@
             Age Range of Children: @Html.DisplayFor(modelItem => item.KidAgeRanges)
         </li>
     </ul>
-        <a asp-action="DaddyLikes" asp-controller="Browse" asp-for="TargetId" asp-route-targetId="@item.Id" id="targetId" value="Pop!">Pop!</a>
+    <a asp-action="DaddyLikes" asp-controller="Browse" asp-for="TargetId" asp-route-targetId="@item.Id" id="targetId" value="Pop!">Pop!</a>
 
 }
 
