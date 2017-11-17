@@ -53,7 +53,7 @@
                     <p>
                         @foreach (var providers in loginProviders)
                         {
-                            <button type ="submit" name ="provider" value ="@providers.Name" title ="Log in using your @providers.DisplayName account > @providers.Name "></button >
+                            <button id="socialButtons" type ="submit" name ="provider" value ="@providers.Name" title ="Log in using your @providers.DisplayName account > @providers.Name ">@providers.Name</button >
                         }
                     </p>
                 </div>
