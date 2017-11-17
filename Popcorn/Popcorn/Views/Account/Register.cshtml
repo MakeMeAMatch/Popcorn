@@ -3,63 +3,65 @@
     Layout = "_Layout";
 }
 
-<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-    <div asp-validation-summary="All"></div>
-    <h4>Create An Account </h4>
+<div class="container">
+    <div class="jumbotron">
+        <h2> Create An Account</h2>
+        <hr class="my-4">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="All"></div>
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span> <br /> <br />
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span> <br /> <br />
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span><br /> <br />
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span><br /> <br />
 
-    <label asp-for="ConfirmPassword"></label>
-    <input asp-for="ConfirmPassword" />
-    <span asp-validation-for="ConfirmPassword"></span><br /> <br />
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span><br /> <br />
 
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" />
-    <span asp-validation-for="FirstName"></span> <br /> <br />
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span> <br /> <br />
 
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" />
-    <span asp-validation-for="LastName"></span> <br /> <br />
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span> <br /> <br />
 
-    <label asp-for="KidAgeRanges"></label>
-    <select asp-for="KidAgeRanges">
-        <option value="Infant (0-12 months)">Infant (0-12 months)</option>
-        <option value="Toddler (1-3 years)">Toddler (1-3 years)</option>
-        <option value="Pre-School (3-5 years)">Pre-School (3-5 years)</option>
-        <option value="Pre-adolescent (5-12 years)">Pre-adolescent (5-12 years)</option>
-        <option value="Adolescent (12-18 years)">Adolescent (12-18 years)</option>
-    </select>
-    <span asp-validation-for="KidAgeRanges"></span> <br /> <br />
+            <label asp-for="KidAgeRanges"></label>
+            <select asp-for="KidAgeRanges">
+                <option value="Infant (0-12 months)">Infant (0-12 months)</option>
+                <option value="Toddler (1-3 years)">Toddler (1-3 years)</option>
+                <option value="Pre-School (3-5 years)">Pre-School (3-5 years)</option>
+                <option value="Pre-adolescent (5-12 years)">Pre-adolescent (5-12 years)</option>
+                <option value="Adolescent (12-18 years)">Adolescent (12-18 years)</option>
+            </select>
+            <span asp-validation-for="KidAgeRanges"></span> <br /> <br />
 
-    <label asp-for="NumberOfKids"></label>
-    <input asp-for="NumberOfKids" />
-    <span asp-validation-for="NumberOfKids"></span> <br /> <br />
+            <label asp-for="NumberOfKids"></label>
+            <input asp-for="NumberOfKids" />
+            <span asp-validation-for="NumberOfKids"></span> <br /> <br />
 
-    <label asp-for="CityState"></label>
-    <input asp-for="CityState" />
-    <span asp-validation-for="CityState"></span> <br /> <br />
+            <label asp-for="CityState"></label>
+            <input asp-for="CityState" />
+            <span asp-validation-for="CityState"></span> <br /> <br />
 
-    <label asp-for="DateOfBirth"></label>
-    <input asp-for="DateOfBirth" />
-    <span asp-validation-for="DateOfBirth"></span> <br /> <br />
+            <label asp-for="DateOfBirth"></label>
+            <input asp-for="DateOfBirth" />
+            <span asp-validation-for="DateOfBirth"></span> <br /> <br />
 
-    <label asp-for="PlaySpots"></label>
-    <select asp-for="PlaySpots">
-        <option value="Park">Park</option>
-        <option value="Library">Library</option>
-        <option value="Fieldtrip">Fieldtrip</option>
-        <option value="Home">Home</option>
-    </select>
-    <span asp-validation-for="PlaySpots"></span> <br /> <br />
+            <label asp-for="PlaySpots"></label>
+            <select asp-for="PlaySpots">
+                <option value="Park">Park</option>
+                <option value="Library">Library</option>
+                <option value="Fieldtrip">Fieldtrip</option>
+                <option value="Home">Home</option>
+            </select>
+            <span asp-validation-for="PlaySpots"></span> <br /> <br />
 
-
-    <button type="submit">Register</button>
-
-
-</form>
+            <button type="submit">Register</button>
+        </form>
+        </div>
+    </div>
