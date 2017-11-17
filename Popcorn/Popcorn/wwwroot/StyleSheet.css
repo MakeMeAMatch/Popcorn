@@ -11,8 +11,20 @@
 }
 
 #newdad{
-    width: 200px;
+    width: 250px;
     float: right;
+    margin-top: -10em;
+}
+
+#dadtwokids {
+    float: right;
+    margin-top: -30em;
+}
+
+#hatdad {
+    width: 400px;
+    float: right;
+    margin-top: -10em;
 }
 
 body {
