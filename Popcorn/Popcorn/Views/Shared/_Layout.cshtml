@@ -26,6 +26,8 @@
                 <li><a asp-controller="Browse" asp-action="Index">Browse</a></li>
                 <li><a asp-controller="Matches" asp-action="Index">Matches</a></li>
                 <li><a asp-controller="Dadfolio" asp-action="TakeQuiz">Dadfolio</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li><a asp-controller="Account" asp-action="Login">Login</a></li>
                 <li><a asp-controller="Account" asp-action="Register">Register</a></li>
                 <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
@@ -38,14 +40,14 @@
     <div>
         @if (!User.Identities.Any(u => u.IsAuthenticated))
         {
-            <span>Welcome, guest!</span>
+            <span class="greeting">Welcome, guest!</span>
 
         }
         else
         {
-            <span>
-                Welcome, @User.Identities.First(u => u.IsAuthenticated &&
-                  u.HasClaim(c => c.Type == ClaimTypes.Name)).FindFirst(ClaimTypes.Name).Value
+
+            <span class="greeting">
+                Welcome back, Pop!
             </span>
 
         }

@@ -20,7 +20,6 @@
     font-family: 'Luckiest Guy', cursive;
     font-size: 10em;
     font-weight: bold;
-
 }
 
 p.baby-hover {
@@ -30,5 +29,30 @@ p.baby-hover {
     font-weight: bold;
     left: 7em;
     color: black;
+
+#newdad{
+    width: 450px;
+    position:absolute;
+    top: 20em;
+    right: 12em;
+}
+
+#dadtwokids {
+    float: right;
+    margin-top: -30em;
+}
+
+#hatdad {
+    width: 400px;
+    float: right;
+    margin-top: -10em;
+}
+
+body {
+    background-color: #667292;
+}
+
+.greeting{
+    color: ghostwhite;
 }
 
