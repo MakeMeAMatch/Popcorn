@@ -1,23 +1,28 @@
 ﻿@model IEnumerable<Popcorn.Models.ApplicationUser>
-
 @*@ViewBag.Profiles*@
 
 @{
     Layout = "_Layout";
 }
 
-@foreach (var item in Model)
-{
-    <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
-    <ul>
-        <li>
-            Number of Children: @Html.DisplayFor(modelItem => item.NumberOfKids)
-        </li>
-        <li>
-            Age Range of Children: @Html.DisplayFor(modelItem => item.KidAgeRanges)
-        </li>
-    </ul>
-    <a asp-action="DaddyLikes" asp-controller="Browse" asp-for="TargetId" asp-route-targetId="@item.Id" id="targetId" value="Pop!">Pop!</a>
+<div class="container">
+    <div class="jumbotron">
+        <h2> Browse Pops</h2>
+        <hr class="my-4">
+        @foreach (var item in Model)
+        {
+            <h2>@Html.DisplayFor(modelItem => item.FirstName)</h2>
+            <ul>
+                <li>
+                    Number of Children: @Html.DisplayFor(modelItem => item.NumberOfKids)
+                </li>
+                <li>
+                    Age Range of Children: @Html.DisplayFor(modelItem => item.KidAgeRanges)
+                </li>
+            </ul>
+            <a asp-action="DaddyLikes" asp-controller="Browse" asp-for="TargetId" asp-route-targetId="@item.Id" id="targetId" value="Pop!">Pop!</a>
 
-}
+        }
+        </div>
+    </div>
 
