@@ -114,6 +114,8 @@ namespace Popcorn.Controllers
         // Checks to see if there is a reciprocal match in the database and causes a "match" notification if there is
         public async Task<IActionResult> DaddyLikes(string targetId)
         {
+            var name = User.Identities.First(u => u.IsAuthenticated &&
+                  u.HasClaim(c => c.Type == ClaimTypes.Name)).FindFirst(ClaimTypes.Name).Value;
 
             var currentUser = await _userManager.GetUserAsync(User);
             Matches newLike = new Matches()
