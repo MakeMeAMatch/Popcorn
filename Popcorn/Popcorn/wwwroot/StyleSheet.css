@@ -10,3 +10,28 @@
     font-size: 14px;
 }
 
+#newdad{
+    width: 250px;
+    float: right;
+    margin-top: -10em;
+}
+
+#dadtwokids {
+    float: right;
+    margin-top: -30em;
+}
+
+#hatdad {
+    width: 400px;
+    float: right;
+    margin-top: -10em;
+}
+
+body {
+    background-color: #667292;
+}
+
+.greeting{
+    color: ghostwhite;
+}
+
