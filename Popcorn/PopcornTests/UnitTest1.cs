@@ -317,5 +317,134 @@ namespace PopcornTests
             //Assert
             Assert.Equal(p.Email, m.Email);
         }
+
+        [Fact]
+        public void ReligionIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                Religion = 2
+            };
+
+            //Assert
+            Assert.IsType<int>(p.Religion);
+        }
+
+        [Fact]
+        public void PoliticsIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                Politics = 1
+            };
+
+            //Assert
+            Assert.IsType<int>(p.Politics);
+        }
+
+        [Fact]
+        public void SportsIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                Sports = 3
+            };
+
+            //Assert
+            Assert.IsType<int>(p.Sports);
+        }
+
+        [Fact]
+        public void DietIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                Diet = 1
+            };
+
+            //Assert
+            Assert.IsType<int>(p.Diet);
+        }
+
+        [Fact]
+        public void EntertainmentIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                Entertainment = 2
+            };
+
+            //Assert
+            Assert.IsType<int>(p.Entertainment);
+        }
+
+        [Fact]
+        public void HonestyIsInt()
+        {
+            // Arrange
+            var p = new Responses
+            {
+
+                //Act
+                HonestySpectrum = 1
+            };
+
+            //Assert
+            Assert.IsType<int>(p.HonestySpectrum);
+        }
+
+        [Fact]
+        public void CanChangeReligion()
+        {
+            // Arrange
+            var m = new Responses { Religion = 2 };
+
+            //Act
+            m.Religion = 5;
+
+            //Assert
+            Assert.Equal(5, m.Religion);
+        }
+
+        [Fact]
+        public void CanChangePolitics()
+        {
+            // Arrange
+            var m = new Responses { Politics = 8 };
+
+            //Act
+            m.Politics = 10;
+
+            //Assert
+            Assert.Equal(10, m.Politics);
+        }
+
+        [Fact]
+        public void CanChangeSports()
+        {
+            // Arrange
+            var m = new Responses { Sports = 9 };
+
+            //Act
+            m.Sports = 7;
+
+            //Assert
+            Assert.Equal(7, m.Sports);
+        }
     }
 }

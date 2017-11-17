@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Popcorn.Data;
 using Popcorn.Models;
+using Popcorn.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace Popcorn.Controllers
 
         public IActionResult Index(string filter)
         {
+            //var profileList = _popcornContext.Profiles.Where(w => w.Id != null);
+            //ViewBag.Profiles = profileList;
+
             List<ApplicationUser> UserProfiles = new List<ApplicationUser>();
 
             //add roles and claims here
