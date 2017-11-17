@@ -537,5 +537,63 @@ namespace PopcornTests
             Assert.Equal("testing!", m.QuestionText);
         }
 
+
+        [Fact]
+        public void UserMatchingIsString()
+        {
+            // Arrange
+            var m = new Matches
+            {
+
+                //Act
+                UserMatchingId = "Test"
+            };
+
+            //Assert
+            Assert.IsType<string>(m.UserMatchingId);
+        }
+
+        [Fact]
+        public void UserMatchedIsString()
+        {
+            // Arrange
+            var m = new Matches
+            {
+
+                //Act
+                UserMatchedId = "Test"
+            };
+
+            //Assert
+            Assert.IsType<string>(m.UserMatchedId);
+        }
+
+        [Fact]
+        public void CanChangeMatchingId()
+        {
+            // Arrange
+            var m = new Matches { UserMatchingId = "test" };
+
+            //Act
+            m.UserMatchingId = "testing!";
+
+            //Assert
+            Assert.Equal("testing!", m.UserMatchingId);
+        }
+
+        [Fact]
+        public void CanChangeMatchedId()
+        {
+            // Arrange
+            var m = new Matches { UserMatchedId = "test" };
+
+            //Act
+            m.UserMatchedId = "testing!";
+
+            //Assert
+            Assert.Equal("testing!", m.UserMatchedId);
+        }
+
+
     }
 }
