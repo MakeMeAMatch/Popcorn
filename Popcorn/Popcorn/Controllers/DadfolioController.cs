@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Popcorn.Data;
 using Popcorn.Models;
 using System;
@@ -21,25 +22,75 @@ namespace Popcorn.Controllers
             _userManager = userManager;
         }
 
+        //GET
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Profiles);
         }
 
-        public IActionResult TakeQuiz()
+        //POST
+        //[HttpPost]
+        //would change parameter to string answerChoicec instead in order to add response data to response database
+        public async Task<IActionResult> TakeQuiz(Profiles profiles)
         {
-            //Questions q = new Questions();
+            var DbProfiles = _context.Profiles;
+            var currentUser = await _userManager.GetUserAsync(User);
+            var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
 
-            //var DbProfiles = _context.Profiles;
-            //var currentUser = await _userManager.GetUserAsync(User);
-            //var currentUserId = _context.Profiles.Where(w => w.ApplicationUserId == currentUser.Id);
             List<Answers> answerList = _context.Answers.ToList();
+            ViewBag.Responses = _context.Responses;
             ViewBag.Answers = answerList;
             ViewBag.UserQuestions = _context.Questions;
             ViewBag.UserAnswers = _context.Answers;
 
+            await _context.AddAsync(profiles);
+            //await _context.SaveChangesAsync();
+
             return View();           
 
+        }
+
+        //PUT
+        [HttpPut]
+        public async Task<IActionResult> Put(int id, Profiles profiles)
+        {
+            if(!ModelState.IsValid)
+            {
+                BadRequest(ModelState);
+            }
+
+            var check = _context.Profiles.FirstOrDefault(w => w.Id == id);
+
+            if (check != null)
+            {
+                check.ApplicationUserId = profiles.ApplicationUserId;
+                check.AnswersId = profiles.AnswersId;
+                check.QuestionsId = profiles.QuestionsId;
+                check.ResponsesId = profiles.ResponsesId;
+                _context.Update(check);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("Index", new { id = profiles.Id }, profiles);
+            }
+            else if(check == null)
+            {
+                await TakeQuiz(profiles);
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = _context.Profiles.FirstOrDefault(w => w.Id == id);
+
+            if(result != null)
+            {
+                _context.Profiles.Remove(result);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }
