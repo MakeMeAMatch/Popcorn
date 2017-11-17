@@ -48,6 +48,7 @@ namespace Popcorn
 
             // This code provides automatic database migrations, regardless of which database we are connected to
             services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
+            services.BuildServiceProvider().GetService<PopcornDbContext>().Database.Migrate();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
