@@ -2,8 +2,11 @@
 @{
     Layout = "_Layout";
 }
-<h1>Your Matches!</h1>
 
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="display-3">Your Matches!</h2>
+        <hr class="my-4">
 @foreach (var user in Model)
 {
     <h2>@Html.DisplayFor(modelItem => user.FirstName)</h2>
@@ -15,5 +18,6 @@
             Age Range of Children: @Html.DisplayFor(modelItem => user.KidAgeRanges)
         </li>
     </ul>
-
 }
+</div>
+</div>
